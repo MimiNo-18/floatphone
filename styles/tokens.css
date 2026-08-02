@@ -197,9 +197,11 @@
   /* 主屏顶部外边距：收紧顶部留白（仅容器外边距，不影响图标/组件格子定位）。 */
   --home-grid-top-offset: 64px;
   --home-row-gap-y: 3px;
-  /* 底部抬升：收紧底部留白，但绝不小于系统安全区(home 横条)，避免遮挡。 */
-  --home-dock-lift: max(env(safe-area-inset-bottom, 0px), 16px);
-  --home-grid-bottom-trim: 40px;
+  /* 底部抬升：dock 有意下探安全区 14px（横条恰落在 dock 下沿留白里，视觉更贴底），
+     6px 为无安全区设备的保底，避免贴死屏幕边。 */
+  --home-dock-lift: max(calc(env(safe-area-inset-bottom, 0px) - 14px), 6px);
+  /* 网格底部留白：越大 = 六行越紧凑、第六排离 dock 越远。三种网格模式统一走这里。 */
+  --home-grid-bottom-trim: 50px;
   --safe-area-top: 48px;
   --status-bar-height: 36px;
   --phone-titlebar-safe-top: max(
@@ -749,8 +751,8 @@
   --c-story-drawer-top: rgba(250, 245, 239, 0.98);
   --c-story-drawer-bottom: rgba(245, 237, 227, 0.98);
   --c-story-drawer-border: rgba(180, 150, 100, 0.08);
-  --c-story-input-bar: rgba(255, 253, 249, 0.75);
-  --c-story-input-bar-focus: rgba(255, 253, 249, 0.95);
+  --c-story-input-bar: #fffdf9;
+  --c-story-input-bar-focus: #fffdf9;
   --c-story-input-border: rgba(180, 150, 100, 0.2);
   --c-story-send-bg: #f0e6d5;
   --c-story-send-bg-active: #e3d4bd;
@@ -847,8 +849,8 @@
   --c-story-drawer-top: rgba(250, 250, 250, 0.98);
   --c-story-drawer-bottom: rgba(245, 245, 245, 0.98);
   --c-story-drawer-border: rgba(0, 0, 0, 0.06);
-  --c-story-input-bar: rgba(255, 255, 255, 0.8);
-  --c-story-input-bar-focus: rgba(255, 255, 255, 0.95);
+  --c-story-input-bar: #ffffff;
+  --c-story-input-bar-focus: #ffffff;
   --c-story-input-border: rgba(0, 0, 0, 0.08);
   --c-story-send-bg: #f0f0f0;
   --c-story-send-bg-active: #d8d8d8;
@@ -895,8 +897,8 @@
   --c-story-drawer-top: rgba(253, 242, 244, 0.98);
   --c-story-drawer-bottom: rgba(250, 234, 239, 0.98);
   --c-story-drawer-border: rgba(200, 130, 160, 0.08);
-  --c-story-input-bar: rgba(255, 251, 252, 0.75);
-  --c-story-input-bar-focus: rgba(255, 251, 252, 0.95);
+  --c-story-input-bar: #fffbfc;
+  --c-story-input-bar-focus: #fffbfc;
   --c-story-input-border: rgba(200, 130, 160, 0.15);
   --c-story-send-bg: #f5e1e8;
   --c-story-send-bg-active: #e7bfca;
@@ -943,8 +945,8 @@
   --c-story-drawer-top: rgba(242, 245, 239, 0.98);
   --c-story-drawer-bottom: rgba(237, 242, 232, 0.98);
   --c-story-drawer-border: rgba(120, 150, 110, 0.08);
-  --c-story-input-bar: rgba(249, 251, 247, 0.75);
-  --c-story-input-bar-focus: rgba(249, 251, 247, 0.95);
+  --c-story-input-bar: #f9fbf7;
+  --c-story-input-bar-focus: #f9fbf7;
   --c-story-input-border: rgba(120, 150, 110, 0.15);
   --c-story-send-bg: #e8ede2;
   --c-story-send-bg-active: #ccd9c3;
